@@ -49,7 +49,7 @@ class _SearchState extends State<Search> {
       "users": users,
       "chatroomId": chatRoomId
     };
-    dbMethod.createChatRoom(chatRoomId, homeMap);
+    dbMethod.addChatRoom(chatRoomId, homeMap);
     Navigator.push(context, MaterialPageRoute(builder: (context) => Chat(chatRoomId: chatRoomId,),));
     }else{
       print("Can't send mess to yourself");

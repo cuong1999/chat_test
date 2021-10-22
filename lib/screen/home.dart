@@ -90,11 +90,11 @@ class _HomeState extends State<Home> {
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
                   return chatRoomTitle(
-                     snapshot.data.docs[index].data()['chatRoomId']
+                     snapshot.data.docs[index].data()['chatroomId']
                         .toString()
                         .replaceAll("_", "")
                         .replaceAll(Constants.myName, ""),
-                    snapshot.data.docs[index].data()["chatRoomId"],
+                    snapshot.data.docs[index].data()["chatroomId"],
                   );
                 })
             : Container();

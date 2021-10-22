@@ -48,9 +48,13 @@ class _SignInState extends State<SignIn> {
         //     await DbMethod().getUserClientbyEmail(emailEdtController.text);
         QuerySnapshot userInfoSnapshot =
             await DbMethod().getListClient();
+            setState((){
+              textAlert = "";
+            });
         for (int i = 0; i < userInfoSnapshot.docs.length; i++) {
           if (emailEdtController.text ==
               userInfoSnapshot.docs[i].data()["email"]) {
+                // HelperFunction.saveUserLoggedInSharedPreference(true);
             HelperFunction.saveUserNameSharedPreference(
                 userInfoSnapshot.docs[i].data()["name"]);
             HelperFunction.saveUserEmailSharedPreference(
@@ -83,7 +87,7 @@ class _SignInState extends State<SignIn> {
           child: SingleChildScrollView(
         child: Container(
           height: MediaQuery.of(context).size.height - 50,
-          child: body(context),
+          child: isLoading ? Center(child: CircularProgressIndicator()) :body(context) ,
         ),
       )),
     );

@@ -26,29 +26,19 @@ class DbMethod {
     });
   }
 
-  changeUserEmailProfile(emailMap) {
-    FirebaseFirestore.instance.collection("users").doc().update(
+  Future changeUserEmailProfile(emailMap) {
+    return FirebaseFirestore.instance.collection("users").doc().update(
         {'email': emailMap['email'], 'name': emailMap['name']}).catchError((e) {
       print("Failure" + e.toString());
     });
 
-    // FirebaseFirestore.instance.collection("users").doc().set({'email':emailMap['email'], 'name':emailMap['name']}).catchError((e) {
-    //   print("Failure" + e.toString());
-    // });
+    
   }
 
-  createChatRoom(String chatRoomId, chatRoomMap) {
-    FirebaseFirestore.instance
-        .collection("ChatRoom")
-        .doc()
-        .set(chatRoomMap)
-        .catchError((e) {
-      print(e.toString());
-    });
-  }
+  
 
-  Future<bool> addChatRoom(chatRoom, chatRoomId) {
-    FirebaseFirestore.instance
+  Future addChatRoom(String chatRoomId, chatRoom) {
+    return FirebaseFirestore.instance
         .collection("chatRoom")
         .doc(chatRoomId)
         .set(chatRoom)

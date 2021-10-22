@@ -38,7 +38,7 @@ class _SignUpState extends State<SignUp> {
       "name": usernameEdtController.text,
       "email": emailEdtController.text,
     };
-
+    // HelperFunction.saveUserLoggedInSharedPreference(true);
     HelperFunction.saveUserEmailSharedPreference(emailEdtController.text);
     HelperFunction.saveUserNameSharedPreference(usernameEdtController.text);
 
@@ -68,7 +68,6 @@ class _SignUpState extends State<SignUp> {
               ? Center(child: CircularProgressIndicator())
               : SingleChildScrollView(
                   child: Container(
-                    // height: MediaQuery.of(context).size.height - 20,
                     child: body(context),
                   ),
                 )),
